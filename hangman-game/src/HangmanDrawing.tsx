@@ -115,7 +115,7 @@ export function HangmanDrawing({numberOfGuesses}: HangmanDrwaingsProps) {
       />
       <div
         style={{
-          height: "400px",
+          height: "320px",
           width: "10px",
           background: "black",
           marginLeft: "123px",
