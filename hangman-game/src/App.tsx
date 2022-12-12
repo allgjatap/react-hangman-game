@@ -15,7 +15,7 @@ function App() {
   const incorrectLetters = guessedLetters.filter(
     letter => !wordToGuess.includes(letter)
   )
-
+  console.log(wordToGuess);
   const isLoser = incorrectLetters.length >= 6
   const isWinner = wordToGuess
     .split("")
@@ -44,7 +44,7 @@ function App() {
     return () => {
       document.removeEventListener("keypress", handler)
     }
-  }, [guessedLetters])
+  }, [addGuessedLetter, guessedLetters])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -74,9 +74,13 @@ function App() {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "Winner! - Refresh to try again"}
-        {isLoser && "Nice Try - Refresh to try again"}
+      <div style={{ fontSize: "2rem", textAlign: "center", color: "green"
+    }}>
+     {isWinner && "Winner! - Refresh to try again"}
+       
+      </div>
+      <div style={{ fontSize: "2rem", textAlign: "center", color: "red" }}>
+      {isLoser && "Nice Try - Refresh to try again"}
       </div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
